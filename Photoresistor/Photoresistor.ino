@@ -18,7 +18,7 @@
 // As usual, we'll create constants to name the pins we're using.
 // This will make it easier to follow the code below.
 
-const int sensorPin = A4;
+const int sensorPin = A5;
 const int ledPin = 8;
 int buttonState = 0;  
 int last_state=0;
@@ -56,9 +56,10 @@ void loop()
   //the number the more sensitive the circuit will be to variances in light.
 
 
-  
-  if (lightVal < 10 and last_state ==0 )
-  {
+ 
+  if (lightVal < 5 and last_state ==0 )
+  { 
+    delay(1000);
     digitalWrite(8, HIGH);
     //left
     digitalWrite(ENABLE,HIGH);
@@ -71,8 +72,9 @@ void loop()
   }
 
   //else, it is bright, turn pin 9 LOW
-  if ( lightVal >10 and last_state==1)
+  if ( lightVal > 10 and last_state==1)
   {
+    delay(1000);
     //right
     digitalWrite(8, LOW);
     digitalWrite(ENABLE,HIGH);
